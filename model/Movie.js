@@ -5,7 +5,7 @@ const movieSchema = new mongoose.Schema({
 		type: String,
 		required: [true, 'Please eneter atitle'],
 	},
-	realease_date: {
+	release_date: {
 		type: Date,
 		required: [true, 'Please add date'],
 	},
@@ -13,14 +13,12 @@ const movieSchema = new mongoose.Schema({
 		type: String,
 		required: [true, 'Add a description'],
 	},
+	actors: {
+		type: [String],
+	},
 	category: {
 		type: [mongoose.Schema.Types.ObjectId],
 		ref: 'Category',
-		required: [true, 'Category is required'],
-	},
-	actors: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Cast',
 	},
 });
 
