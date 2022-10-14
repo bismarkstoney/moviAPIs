@@ -1,8 +1,6 @@
+const Movie = require('../model/Movie');
 //@access - Public
 //@route  - POST api/v1/movies
-
-const Movie = require('../model/Movie');
-
 //@desc   - routes to allow user to add their favorite movie
 exports.addMovie = async (req, res) => {
 	try {

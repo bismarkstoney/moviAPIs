@@ -4,6 +4,7 @@ const express = require('express');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 const movieRouter = require('./router/movieRouter');
+const movieCategory = require('./router/category');
 const PORT = process.env.PORT || 5000;
 
 const app = express();
@@ -18,6 +19,7 @@ if (process.env.NODE_ENV === 'development') {
 
 //routes
 app.use('/api/v1/movies', movieRouter);
+app.use('/api/v1/category', movieCategory);
 app.listen(PORT, () =>
 	console.log(
 		`The server is running on port ${PORT} in ${process.env.NODE_ENV} `
