@@ -13,6 +13,10 @@ const movieSchema = new mongoose.Schema({
 		type: String,
 		required: [true, 'Add a description'],
 	},
+	rank: {
+		type: String,
+		required: [true],
+	},
 	actors: {
 		type: [String],
 	},
