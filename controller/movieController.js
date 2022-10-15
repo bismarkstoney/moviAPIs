@@ -31,7 +31,13 @@ exports.addMovie = async (req, res) => {
 //@desc   - routes to get all the list of movies
 exports.getAllMovie = async (req, res) => {
 	try {
-		const movie = await Movie.find();
+		const queryObj = { ...this.qu };
+		const movie = await Movie.find()
+			.populate({
+				path: 'category',
+				select: 'title -_id ',
+			})
+			.exec();
 
 		res.status(200).json({ success: true, results: movie.length, data: movie });
 	} catch (error) {
@@ -45,7 +51,8 @@ exports.getAllMovie = async (req, res) => {
 
 exports.getMovie = async (req, res) => {
 	try {
-		const { id } = req.params.id;
+		const { id } = req.params;
+		console.log(id);
 		const movie = await Movie.findById(id);
 		if (!movie) {
 			return res.status(404).json({ message: `Movie not found` });
@@ -61,7 +68,8 @@ exports.getMovie = async (req, res) => {
 //@desc   - routes to allow users Delete movies
 exports.deleteMovie = async (req, res) => {
 	try {
-		const { id } = req.params.id;
+		const { id } = req.params;
+
 		const movie = await Movie.findById(id);
 
 		if (!movie) {
@@ -79,7 +87,7 @@ exports.deleteMovie = async (req, res) => {
 //@desc   - routes to allow users update movies
 exports.updateMovie = async (req, res) => {
 	try {
-		const { id } = req.params.id;
+		const { id } = req.params;
 
 		const movie = await Movie.findByIdAndUpdate(id, req.body, {
 			new: true,
