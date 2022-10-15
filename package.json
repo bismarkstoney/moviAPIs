@@ -14,6 +14,9 @@
 		"Search",
 		"Local"
 	],
+	"engines": {
+		"node": "14.x"
+	},
 	"author": "Bismark Obeng",
 	"license": "ISC",
 	"dependencies": {
