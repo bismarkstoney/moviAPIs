@@ -5,7 +5,8 @@ const APIFeatures = require('../utils/apiFeatures');
 //@desc   - routes to allow user to add their favorite movie
 exports.addMovie = async (req, res) => {
 	try {
-		const { category, title, description, release_date, actors } = req.body;
+		const { category, title, description, release_date, actors, rank } =
+			req.body;
 		if (!category || !title || !description || !release_date) {
 			return res.status(500).json({
 				message:
@@ -18,6 +19,7 @@ exports.addMovie = async (req, res) => {
 			description,
 			release_date,
 			actors,
+			rank,
 		});
 		res
 			.status(200)
