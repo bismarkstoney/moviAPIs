@@ -22,7 +22,7 @@ app.use('/api/v1/movies', movieRouter);
 app.use('/api/v1/category', movieCategory);
 
 //health check path
-app.get('/', (req, res) => {
+app.get('/healthcheck', (req, res) => {
 	res.status(200).json({ message: 'Passed' });
 });
 app.listen(PORT, () =>
