@@ -15,7 +15,7 @@ const movieSchema = new mongoose.Schema({
 	},
 	rank: {
 		type: String,
-		required: [true],
+		required: [true, 'Add a rank'],
 	},
 	actors: {
 		type: [String],

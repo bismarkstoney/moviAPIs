@@ -21,3 +21,5 @@ a movie, list and rank their movie selections. Start with basic CRUD for movies 
 #### Here is the links to live hosting API and postman documento link
 
 - <a href="https://movie-api-cw7g.onrender.com/api/v1/movies" target="_blank">Movie APIs Link</a>
+- <a href="https://documenter.getpostman.com/view/10497807/2s847A1HG3" target="_blank">Postman</a>
+-
