@@ -20,6 +20,11 @@ if (process.env.NODE_ENV === 'development') {
 //routes
 app.use('/api/v1/movies', movieRouter);
 app.use('/api/v1/category', movieCategory);
+
+//health check path
+app.get('/', (req, res) => {
+	res.status(200).json({ message: 'Passed' });
+});
 app.listen(PORT, () =>
 	console.log(
 		`The server is running on port ${PORT} in ${process.env.NODE_ENV} `
