@@ -1,4 +1,5 @@
 const Movie = require('../model/Movie');
+const APIFeatures = require('../utils/apiFeatures');
 //@access - Public
 //@route  - POST api/v1/movies
 //@desc   - routes to allow user to add their favorite movie
@@ -31,13 +32,19 @@ exports.addMovie = async (req, res) => {
 //@desc   - routes to get all the list of movies
 exports.getAllMovie = async (req, res) => {
 	try {
-		const queryObj = { ...this.qu };
-		const movie = await Movie.find()
-			.populate({
+		const features = new APIFeatures(
+			Movie.find().populate({
 				path: 'category',
 				select: 'title -_id ',
-			})
-			.exec();
+			}),
+			req.query
+		)
+			.filter()
+			.sort()
+			.limitFields()
+			.paginate();
+
+		const movie = await features.query;
 
 		res.status(200).json({ success: true, results: movie.length, data: movie });
 	} catch (error) {

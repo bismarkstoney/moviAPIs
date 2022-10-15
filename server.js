@@ -30,3 +30,5 @@ app.listen(PORT, () =>
 		`The server is running on port ${PORT} in ${process.env.NODE_ENV} `
 	)
 );
+
+module.exports = app;
